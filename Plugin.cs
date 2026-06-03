@@ -1,4 +1,5 @@
 ﻿using Exiled.API.Features;
+using Exiled.Events.EventArgs.Player;
 using Exiled.Events.EventArgs.Server;
 
 namespace AntiSpamReportSystem
@@ -16,28 +17,49 @@ namespace AntiSpamReportSystem
             
         {
             Instance = this;
-            Exiled.Events.Handlers.Server.LocalReporting += reported;
+            Exiled.Events.Handlers.Server.LocalReporting += OnLocalReporting;
+            Exiled.Events.Handlers.Player.SendingValidCommand += OnSendingValidCommand;
             base.OnEnabled();
         }
         public void OnDisabled()
         {
             Instance = null;
-            Exiled.Events.Handlers.Server.LocalReporting -= reported;
+            Exiled.Events.Handlers.Server.LocalReporting -= OnLocalReporting;
+            Exiled.Events.Handlers.Player.SendingValidCommand -= OnSendingValidCommand;
             base.OnDisabled();
         }
 
-        private void reported(LocalReportingEventArgs ev)
+        private void OnLocalReporting(LocalReportingEventArgs ev)
         {
-            if (ev.Reason.Length >= _config.SymbolToWarnPlayer)
+            if (ev.Reason.Length >= _config.SymbolInReportToWarnPlayer)
             {
                 ev.IsAllowed = false;
-                ev.Player.ShowHint($"The report must not exceed the character <b><color=red>limit!</color></b>({_config.SymbolToWarnPlayer})", 3);
-                if (ev.Reason.Length >= _config.SymbolTobanPlayer)
+                ev.Player.ShowHint(_config.ShowWarn + $"({_config.SymbolInReportToWarnPlayer})", 3);
+                if (ev.Reason.Length >= _config.SymbolInReportToBanPlayer)
                 {
-                    ev.Player.Ban(999999999, $"Auto-moderation: Spam in the report. Contact our Discord server if you were banned by mistake. Number: {ev.Reason.Length}. Discord: {_config.Discord} ");
-                    Log.Warn($"Player {ev.Player} has sent a report! The number of characters in the report: {ev.Reason.Length}");
+                    ev.Player.Ban(999999999, _config.BanReason + $"{ev.Reason.Length}. Discord: {_config.Discord}");
+                    Log.Warn($"Игрок {ev.Player} отправил репорт! Число символов в репорте {ev.Reason.Length}");
                 }
                 return;
+            }
+        }
+
+        private void OnSendingValidCommand(SendingValidCommandEventArgs ev)
+        {
+            if (ev.Type == LabApi.Features.Enums.CommandType.Client)
+            {
+                if (ev.Query.Length >= _config.SymbolInConsoleToWarnPlayer)
+                {
+                    ev.IsAllowed = false;
+                    ev.Player.ShowHint(_config.ShowWarn + $"({_config.SymbolInConsoleToWarnPlayer})", 3);
+                    ev.Response = _config.ShowWarn + $"({_config.SymbolInConsoleToWarnPlayer})";
+                    if (ev.Query.Length >= _config.SymbolInConsoleToBanPlayer)
+                    {
+                        ev.Player.Ban(999999999, _config.BanReason + $"{ev.Query.Length}. Discord: {_config.Discord}");
+                        Log.Warn($"Игрок {ev.Player} отправил Репорт/Команду! Число символов в Репорте/Команде {ev.Query.Length}");
+                    }
+                    return;
+                }
             }
         }
     }
