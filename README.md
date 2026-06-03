@@ -2,8 +2,16 @@
 
 🎛configs:
 
-SymbolToWarnPlayer - After what limit does the player receive a warning?
+SymbolInReportToWarnPlayer - After what limit in the report does the player receive a warning?
 
-SymbolTobanPlayer - After what limit will the player be banned?
+SymbolInReportTobanPlayer - After what limit in the report will the player be banned?
 
 Discord - your discord server link
+
+SymbolInConsoleToWarnPlayer - After what limit in the console will the player be banned?
+
+SymbolInConsoleToBanPlayer - After what limit in the console will the player be banned?
+
+ShowWarn - warn message
+
+BanReason - ban reason bruh
