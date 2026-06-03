@@ -15,3 +15,7 @@ SymbolInConsoleToBanPlayer - After what limit in the console will the player be 
 ShowWarn - warn message
 
 BanReason - ban reason bruh
+
+UseBan - Should use ban or kick (true or false)
+
+BanDuration - Ban duration if UseBan is true
