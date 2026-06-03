@@ -11,7 +11,7 @@ namespace AntiSpamReportSystem
         public override string Prefix => "AntiReportSpamSystem";
 
         public static Plugin Instance { get; private set; }
-        private Config _config => Plugin.Instance.Config;
+        private Config _config => Instance.Config;
 
         public override void OnEnabled()
             
@@ -21,7 +21,7 @@ namespace AntiSpamReportSystem
             Exiled.Events.Handlers.Player.SendingValidCommand += OnSendingValidCommand;
             base.OnEnabled();
         }
-        public void OnDisabled()
+        public override void OnDisabled()
         {
             Instance = null;
             Exiled.Events.Handlers.Server.LocalReporting -= OnLocalReporting;
@@ -34,12 +34,21 @@ namespace AntiSpamReportSystem
             if (ev.Reason.Length >= _config.SymbolInReportToWarnPlayer)
             {
                 ev.IsAllowed = false;
-                ev.Player.ShowHint(_config.ShowWarn + $"({_config.SymbolInReportToWarnPlayer})", 3);
+
+                ev.Player.ShowHint($"{_config.ShowWarn} ({_config.SymbolInReportToWarnPlayer})", 3);
+
                 if (ev.Reason.Length >= _config.SymbolInReportToBanPlayer)
                 {
-                    ev.Player.Ban(999999999, _config.BanReason + $"{ev.Reason.Length}. Discord: {_config.Discord}");
+                    string text = string.Format(_config.BanReason, ev.Reason.Length);
+
+                    if (_config.UseBan)
+                        ev.Player.Ban(_config.BanDuration, $"{text}. Discord: {_config.Discord}");
+                    else
+                        ev.Player.Kick(text);
+
                     Log.Warn($"Игрок {ev.Player} отправил репорт! Число символов в репорте {ev.Reason.Length}");
                 }
+
                 return;
             }
         }
@@ -50,14 +59,23 @@ namespace AntiSpamReportSystem
             {
                 if (ev.Query.Length >= _config.SymbolInConsoleToWarnPlayer)
                 {
+                    string text = string.Format(_config.BanReason, ev.Query.Length);
+
                     ev.IsAllowed = false;
-                    ev.Player.ShowHint(_config.ShowWarn + $"({_config.SymbolInConsoleToWarnPlayer})", 3);
-                    ev.Response = _config.ShowWarn + $"({_config.SymbolInConsoleToWarnPlayer})";
+
+                    ev.Player.ShowHint($"{_config.ShowWarn} ({_config.SymbolInConsoleToWarnPlayer})", 3);
+                    ev.Response = $"{_config.ShowWarn} ({_config.SymbolInConsoleToWarnPlayer})";
+
                     if (ev.Query.Length >= _config.SymbolInConsoleToBanPlayer)
                     {
-                        ev.Player.Ban(999999999, _config.BanReason + $"{ev.Query.Length}. Discord: {_config.Discord}");
+                        if (_config.UseBan)
+                            ev.Player.Ban(_config.BanDuration, $"{text}. Discord: {_config.Discord}");
+                        else
+                            ev.Player.Kick(text);
+
                         Log.Warn($"Игрок {ev.Player} отправил Репорт/Команду! Число символов в Репорте/Команде {ev.Query.Length}");
                     }
+
                     return;
                 }
             }
