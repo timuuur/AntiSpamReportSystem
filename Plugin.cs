@@ -41,11 +41,11 @@ namespace AntiSpamReportSystem
 
                 if (ev.Reason.Length >= _config.SymbolInReportToBanPlayer)
                 {
-
+                    string text = string.Format(_config.BanReason, ev.Reason.Length);
                     if (_config.UseBan)
-                        ev.Player.Ban(_config.BanDuration, $"{_config.BanReason} {ev.Reason.Length}. Discord: {_config.Discord}");
+                        ev.Player.Ban(_config.BanDuration, $"{text}. Discord: {_config.Discord}");
                     else
-                        ev.Player.Kick($"{_config.BanReason} {ev.Reason.Length}.");
+                        ev.Player.Kick($"{text}.");
 
                     Log.Warn($"Игрок {ev.Player} отправил репорт! Число символов в репорте {ev.Reason.Length}");
                 }
@@ -54,11 +54,12 @@ namespace AntiSpamReportSystem
 
             if (_config.WarnAdminReport)
             {
+                string text = string.Format(_config.ReportAdminMessage, ev.Reason, ev.Player.Nickname);
                 foreach (Player player in Player.List)
                 {
                     if (player.RemoteAdminAccess)
                     {
-                        player.Broadcast(7, _config.ReportAdminMessage1 + ev.Reason + _config.ReportAdminMessage2 + $" <color=red>{ev.Player.Nickname}</color>" + "[" + ev.Player.Id + "]", Broadcast.BroadcastFlags.AdminChat);
+                        player.Broadcast(7, text, Broadcast.BroadcastFlags.AdminChat);
                     }
                 }
             }
@@ -75,23 +76,25 @@ namespace AntiSpamReportSystem
 
                 if (ev.Reason.Length >= _config.SymbolInReportToBanPlayer)
                 {
-
+                    string text = string.Format(_config.BanReason, ev.Reason.Length);
                     if (_config.UseBan)
-                        ev.Player.Ban(_config.BanDuration, $"{_config.BanReason} {ev.Reason.Length}. Discord: {_config.Discord}");
+                        ev.Player.Ban(_config.BanDuration, $"{text}. Discord: {_config.Discord}");
                     else
-                        ev.Player.Kick($"{_config.BanReason} {ev.Reason.Length}.");
+                        ev.Player.Kick($"{text}.");
 
                     Log.Warn($"Игрок {ev.Player} отправил репорт! Число символов в репорте {ev.Reason.Length}");
                 }
                 return;
             }
+
             if (_config.WarnAdminReport)
             {
+                string text = string.Format(_config.ReportAdminMessage, ev.Reason, ev.Player.Nickname);
                 foreach (Player player in Player.List)
                 {
                     if (player.RemoteAdminAccess)
                     {
-                        player.Broadcast(7, _config.ReportAdminMessage1 + ev.Reason + _config.ReportAdminMessage2 + $" <color=red>{ev.Player.Nickname}</color>" + "[" + ev.Player.Id + "]", Broadcast.BroadcastFlags.AdminChat);
+                        player.Broadcast(7, text, Broadcast.BroadcastFlags.AdminChat);
                     }
                 }
             }

@@ -13,9 +13,8 @@ namespace AntiSpamReportSystem
         public int SymbolInConsoleToBanPlayer { get; set; } = 500;
         public string Discord { get; set; } = "https://discord.gg/hSynuedaga";
         public string ShowWarn { get; set; } = "Репорт/Команда не должен превышать лимит символов!";
-        public string BanReason { get; set; } = "Автомодерация: Спам в репорт/консоль. Обратитесь в наш дискорд сервер, если вас забанили по ошибке. Количество символов: ";
-        public string ReportAdminMessage1 { get; set; } = "<b><color=yellow>Жалоба:</color></b>";
-        public string ReportAdminMessage2 { get; set; } = ". <b><color=yellow>От игрока:</color></b>";
+        public string BanReason { get; set; } = "Автомодерация: Спам в репорт/консоль. Обратитесь в наш дискорд сервер, если вас забанили по ошибке. Количество символов: {0}";
+        public string ReportAdminMessage { get; set; } = "<b><color=yellow>Жалоба:</color></b> {0}. <b><color=yellow>\nОт игрока:</color></b> <color=red>{1}</color>";
         public bool UseBan { get; set; } = true;
         public bool WarnAdminReport { get; set; } = true;
         public int BanDuration { get; set; } = 999999999;
