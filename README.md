@@ -16,6 +16,12 @@ ShowWarn - warn message
 
 BanReason - ban reason bruh
 
+ReportAdminMessage1 - message "report:"
+
+ReportAdminMessage2 - message "from the player:"
+
 UseBan - Should use ban or kick (true or false)
+
+WarnAdminReport - Enable notification to administrators
 
 BanDuration - Ban duration if UseBan is true
