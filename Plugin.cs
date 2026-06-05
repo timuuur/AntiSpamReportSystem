@@ -14,10 +14,11 @@ namespace AntiSpamReportSystem
         private Config _config => Instance.Config;
 
         public override void OnEnabled()
-            
+
         {
             Instance = this;
             Exiled.Events.Handlers.Server.LocalReporting += OnLocalReporting;
+            Exiled.Events.Handlers.Server.ReportingCheater += OnReportingCheater;
             Exiled.Events.Handlers.Player.SendingValidCommand += OnSendingValidCommand;
             base.OnEnabled();
         }
@@ -25,6 +26,7 @@ namespace AntiSpamReportSystem
         {
             Instance = null;
             Exiled.Events.Handlers.Server.LocalReporting -= OnLocalReporting;
+            Exiled.Events.Handlers.Server.ReportingCheater -= OnReportingCheater;
             Exiled.Events.Handlers.Player.SendingValidCommand -= OnSendingValidCommand;
             base.OnDisabled();
         }
@@ -48,8 +50,18 @@ namespace AntiSpamReportSystem
 
                     Log.Warn($"Игрок {ev.Player} отправил репорт! Число символов в репорте {ev.Reason.Length}");
                 }
-
                 return;
+            }
+
+            if (_config.WarnAdminReport)
+            {
+                foreach (Player player in Player.List)
+                {
+                    if (player.RemoteAdminAccess)
+                    {
+                        player.Broadcast(7, _config.ReportAdminMessage1 + ev.Reason + _config.ReportAdminMessage2 + $" <color=red>{ev.Player.Nickname}</color>" + "[" + ev.Player.Id + "]", Broadcast.BroadcastFlags.AdminChat);
+                    }
+                }
             }
         }
 
@@ -75,8 +87,32 @@ namespace AntiSpamReportSystem
 
                         Log.Warn($"Игрок {ev.Player} отправил Репорт/Команду! Число символов в Репорте/Команде {ev.Query.Length}");
                     }
-
                     return;
+                }
+            }
+        }
+
+        private void OnReportingCheater(ReportingCheaterEventArgs ev)
+        {
+            if (ev.Reason.Length >= _config.SymbolInReportToWarnPlayer)
+            {
+                ev.IsAllowed = false;
+                ev.Player.ShowHint(_config.ShowWarn + $"({_config.SymbolInReportToWarnPlayer})", 3);
+                if (ev.Reason.Length >= _config.SymbolInReportToBanPlayer)
+                {
+                    ev.Player.Ban(999999999, _config.BanReason + $"{ev.Reason.Length}. Discord: {_config.Discord}");
+                    Log.Warn($"Игрок {ev.Player} отправил репорт! Число символов в репорте {ev.Reason.Length}");
+                }
+                return;
+            }
+            if (_config.WarnAdminReport)
+            {
+                foreach (Player player in Player.List)
+                {
+                    if (player.RemoteAdminAccess)
+                    {
+                        player.Broadcast(7, _config.ReportAdminMessage1 + ev.Reason + _config.ReportAdminMessage2 + $" <color=red>{ev.Player.Nickname}</color>" + "[" + ev.Player.Id + "]", Broadcast.BroadcastFlags.AdminChat);
+                    }
                 }
             }
         }

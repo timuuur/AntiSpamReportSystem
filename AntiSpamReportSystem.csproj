@@ -32,61 +32,61 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="AudioPlayerApi">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\AudioPlayerApi.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\AudioPlayerApi.dll</HintPath>
     </Reference>
     <Reference Include="CommandSystem.Core">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\CommandSystem.Core.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\CommandSystem.Core.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.API">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.API.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.API.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.CreditTags">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.CreditTags.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.CreditTags.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.CustomItems">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.CustomItems.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.CustomItems.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.CustomRoles">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.CustomRoles.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.CustomRoles.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.Events">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.Events.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.Events.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.Loader">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.Loader.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.Loader.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.Permissions">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Exiled.Permissions.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Exiled.Permissions.dll</HintPath>
     </Reference>
     <Reference Include="HintServiceMeow-Exiled">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\HintServiceMeow-Exiled.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\HintServiceMeow-Exiled.dll</HintPath>
     </Reference>
     <Reference Include="LabApi">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\LabApi.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\LabApi.dll</HintPath>
     </Reference>
     <Reference Include="Mirror">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Mirror.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Mirror.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NorthwoodLib">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\NorthwoodLib.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\NorthwoodLib.dll</HintPath>
     </Reference>
     <Reference Include="Pooling">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\Pooling.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\Pooling.dll</HintPath>
     </Reference>
     <Reference Include="ProjectMER">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\ProjectMER.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\ProjectMER.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -97,16 +97,16 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UntitledCustomRoles">
-      <HintPath>..\..\..\Desktop\Ссылки для VS\UntitledCustomRoles.dll</HintPath>
+      <HintPath>..\..\..\OneDrive\Рабочий стол\Ссылки для VS\UntitledCustomRoles.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
