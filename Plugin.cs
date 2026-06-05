@@ -114,10 +114,11 @@ namespace AntiSpamReportSystem
 
                     if (ev.Query.Length >= _config.SymbolInConsoleToBanPlayer)
                     {
+                        string text = string.Format(_config.BanReason, ev.Query.Length);
                         if (_config.UseBan)
-                            ev.Player.Ban(_config.BanDuration, $"{_config.BanReason} {ev.Query.Length}. Discord: {_config.Discord}");
+                            ev.Player.Ban(_config.BanDuration, $"{text}. Discord: {_config.Discord}");
                         else
-                            ev.Player.Kick($"{_config.BanReason} {ev.Query.Length}.");
+                            ev.Player.Kick($"{text}.");
 
                         Log.Warn($"Игрок {ev.Player} отправил Репорт/Команду! Число символов в Репорте/Команде {ev.Query.Length}");
                     }
